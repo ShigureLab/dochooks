@@ -47,7 +47,7 @@ hooks-update:
   uv run pre-commit autoupdate
 
 ci-install:
-  just install
+  uv sync --locked --all-extras --dev
 
 ci-fmt-check:
   uv run ruff format --check --diff .
@@ -57,5 +57,5 @@ ci-lint:
   just lint
 
 ci-test:
-  uv run pytest --reruns 3 --reruns-delay 1
+  uv run --locked pytest --reruns 3 --reruns-delay 1
   just clean
