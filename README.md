@@ -15,9 +15,6 @@ Some pre-commit hooks for docs.
 
 ## Usage
 
-Requires Python 3.11 or newer. CI tests Python 3.11–3.15, including the
-free-threaded Python 3.15 build (`3.15t`). Python 3.15 is currently a prerelease.
-
 `.pre-commit-config.yaml`
 
 ```yaml

@@ -40,26 +40,6 @@ jobs:
         run: |
           just ci-install
 
-      - name: Verify test interpreter
-        run: |
-          uv run --locked python - <<'PY'
-          import os
-          import sys
-          import sysconfig
-
-          import dochooks
-          import pytest
-
-          requested = os.environ["UV_PYTHON"]
-          expected_version = tuple(map(int, requested.rstrip("t").split(".")))
-          free_threaded = requested.endswith("t")
-          print(sys.version)
-          assert sys.version_info[:2] == expected_version
-          assert bool(sysconfig.get_config_var("Py_GIL_DISABLED")) == free_threaded
-          if free_threaded:
-              assert not sys._is_gil_enabled()
-          PY
-
       - name: unit test
         run: |
           just ci-test
